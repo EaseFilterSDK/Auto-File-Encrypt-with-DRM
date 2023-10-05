@@ -23,6 +23,7 @@ With the access control policies, you can setup the whitelist processes or users
 ## A C# Auto File DRM Encryption Example
 The C# auto file DRM encryption example allows you to embed the build in DRM data to the new encrypted file, the build in DRM data includes the access control policies, allow you to control the encrypted file access without the center server. You also can embed the custom DRM data to the new encrypted file, and store your access control policies in the center server, the encrypted file access can be controlled and monitored by the center server, you can expire the encrypted file, grant or revoke the access of the encrypted files anywhere and anytime even they were distributed, you will know who and when your encrytped file was accessed.
 
-![File Encryption Demo](https://www.easefilter.com/images/autoencrypt.png)![drm setting](https://www.easefilter.com/images/DRM.png)
+![File Encryption Demo](https://www.easefilter.com/images/autoencrypt.png) 
+![drm setting](https://www.easefilter.com/images/DRM.png)
 
 [Read more about auto file encryption example](https://www.easefilter.com/Forums_Files/AutoFileEncryption.htm)
