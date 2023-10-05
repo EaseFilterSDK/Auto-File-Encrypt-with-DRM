@@ -26,4 +26,4 @@ The C# auto file DRM encryption example allows you to embed the build in DRM dat
 ![File Encryption Demo](https://www.easefilter.com/images/autoencrypt.png) 
 ![drm setting](https://www.easefilter.com/images/DRM.png)
 
-[Read more about auto file encryption example](https://www.easefilter.com/Forums_Files/AutoFileEncryption.htm)
+[Read more about auto file encryption example](https://www.easefilter.com/kb/auto-file-drm-encryption-tool.htm)
