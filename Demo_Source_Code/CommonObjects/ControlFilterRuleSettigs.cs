@@ -55,17 +55,15 @@ namespace EaseFilter.CommonObjects
 
             SetCheckBoxValue();
 
-            if (filterRule.EncryptionKeySize == 16)
+            if (filterRule.EncryptMethod ==  (int)FilterAPI.EncryptionMethod.ENCRYPT_FILE_WITH_SAME_KEY_AND_UNIQUE_IV )
             {
-                radioButton_128.Checked = true;
-            }
-            else if (filterRule.EncryptionKeySize == 24)
-            {
-                radioButton_196.Checked = true;
+                radioButton_EncryptFileWithSameKey.Checked = true;
+                radioButton_EncryptFileWithTagData.Checked = false;
             }
             else
             {
-                radioButton_256.Checked = true;
+                radioButton_EncryptFileWithSameKey.Checked = false;
+                radioButton_EncryptFileWithTagData.Checked = true;
             }
         }
 
@@ -215,12 +213,20 @@ namespace EaseFilter.CommonObjects
             uint accessFlags = uint.Parse(textBox_FileAccessFlags.Text);
 
             if (checkBox_Encryption.Checked)
-            {
-                filterRule.EncryptMethod = (int)FilterAPI.EncryptionMethod.ENCRYPT_FILE_WITH_SAME_KEY_AND_UNIQUE_IV;
+            {               
                 encryptionPassPhrase = textBox_PassPhrase.Text;
 
                 //enable encryption for this filter rule.
                 accessFlags = accessFlags | (uint)FilterAPI.AccessFlag.ENABLE_FILE_ENCRYPTION_RULE;
+
+                if (radioButton_EncryptFileWithSameKey.Checked)
+                {
+                    filterRule.EncryptMethod = (int)FilterAPI.EncryptionMethod.ENCRYPT_FILE_WITH_SAME_KEY_AND_UNIQUE_IV;
+                }
+                else
+                {
+                    filterRule.EncryptMethod = (int)FilterAPI.EncryptionMethod.ENCRYPT_FILE_WITH_KEY_IV_AND_TAGDATA_FROM_SERVICE;
+                }
             }
 
             if (textBox_HiddenFilterMask.Text.Trim().Length > 0)
@@ -236,20 +242,8 @@ namespace EaseFilter.CommonObjects
             else
             {
                 GlobalConfig.EnableSendDeniedEvent = false;
-            }
-
-            if (radioButton_128.Checked)
-            {
-                filterRule.EncryptionKeySize = 16;
-            }
-            else if (radioButton_196.Checked)
-            {
-                filterRule.EncryptionKeySize = 24;
-            }
-            else
-            {
-                filterRule.EncryptionKeySize = 32;
-            }
+            }           
+           
             filterRule.EncryptionPassPhrase = encryptionPassPhrase;
             filterRule.HiddenFileFilterMasks = textBox_HiddenFilterMask.Text;
             filterRule.ReparseFileFilterMask = textBox_ReparseFileFilterMask.Text;

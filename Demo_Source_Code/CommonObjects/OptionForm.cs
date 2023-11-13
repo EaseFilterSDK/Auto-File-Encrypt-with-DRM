@@ -343,7 +343,27 @@ namespace EaseFilter.CommonObjects
                                 lvItem.Checked = true;
                             }
 
-                            listView1.Items.Add(lvItem);
+                            if (i > 0 )
+                            {
+                                for (int k = 0; k < i; k++)
+                                {
+                                    if ((int)listView1.Items[k].Tag > processlist[i].Id)
+                                    {
+                                        listView1.Items.Insert(k, lvItem);
+                                        break;
+                                    }
+                                }
+
+                                if (listView1.Items.Count == i )
+                                {
+                                    listView1.Items.Insert(i, lvItem);
+                                }
+                                
+                            }
+                            else
+                            {
+                                listView1.Items.Insert(i, lvItem);
+                            }
 
                         }
 
